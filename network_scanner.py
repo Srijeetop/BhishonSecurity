@@ -169,6 +169,7 @@ def real_scan(subnet: str = "192.168.1.0/24") -> list:
     
     """
     import nmap
+    from dataSend import wrapper
 
     print(f"  [SCAN] Starting real nmap scan on {subnet}...")
     print(f"  [SCAN] This may take 2-5 minutes depending on network size...")
@@ -250,6 +251,8 @@ def real_scan(subnet: str = "192.168.1.0/24") -> list:
 
         nodes.append(node)
         print(f"  [SCAN] Found: {ip} ({hostname}) — {len(node.open_ports)} open ports")
+
+    wrapper(nodes)
 
     print(f"  [SCAN] Complete. Found {len(nodes)} live hosts.")
     return nodes
